@@ -15,9 +15,6 @@ generateBtn.addEventListener("click", writePassword);
 
 // psuedocode test and trial.
 //Password object, all valuees which can be randomly generated can be accessed from here.
-  var lowerCase = ['a','b', 'c', 'd', 'e','f', 'g', 'h', 'i', 'j','k','l','m','n', 'o', 'p','q','r','s','t','u','v','w','x','y','z',];
- var integer =['0','1','2','3','4','5','6','7','8','9'];
-  var specialCharacters = ['~','`','!','@', '#', '$', '%','^', '&', '*', '(', ')','-','_','+','=', '{', '[',']','}','|',":",';','"',"'",'<',',','>','.','?', '/'];
  
   //Password Criteria This section will bring up a group of boxes to request the user what conditions they wish to use for their password. The following block is catch in case user selects cancel on all confirm boxes asking the user to at least select one.
 // All credit to answered Dec 15 '19 at 16:43 Aaron Plocharczyk at https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working 
@@ -45,12 +42,17 @@ while (!uppers && !lowers && !numbers && !symbols) {
 }
 // End of borrowed code
 // password generation variables 
-;
+var lowerCase =  ['a','b', 'c', 'd', 'e','f', 'g', 'h', 'i', 'j','k','l','m','n', 'o', 'p','q','r','s','t','u','v','w','x','y','z',];
+var upperCase = ['A','B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J','K','L','M','N', 'O', 'P','Q','R','S','T','U','V','W','X','Y','Z',];
+var numerals = ['0','1','2','3','4','5','6','7','8','9'];
+var special =  ['~','`','!','@', '#', '$', '%','^', '&', '*', '(', ')','-','_','+','=', '{', '[',']','}','|',":",';','"',"'",'<',',','>','.','?', '/'];
 var passwordCharArray = [
   lowerCase,
-  specialCharacters,
-  integer,
+  upperCase,
+  numerals,
+  special,
 ]
+
 
 //Look into turning the following into an array or create a value seperately inside an object or an array return to the function and do something else.
 
@@ -59,19 +61,16 @@ function generatePassword () {
   var passPhrase = '';
   for (var characterNumber = 0; characterNumber <= length; characterNumber++) {
     if ((uppers === true) && (lowers === true) && (numbers === true) && (symbols === true))  {
-      let selector = Math.floor(Math.random())* passwordCharArray.length;
-      console.log(selector);
-      let selected =selector[Math.floor(Math.random())* selector.length];
-      console.log(selected);
-      passPhrase += selected;
+      let selector = Math.floor(Math.random()* passwordCharArray.length);
+      let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
+      passPhrase += passwordCharArray[selector][selected];
       console.log(passPhrase);
-     return passPhrase;
     }
   } 
 }
 
 
-generatePassword();
+
 /* The following is an idea suggested by Instructor Trent to follow through on
 generatePassword2();
 let passCharArray = [
