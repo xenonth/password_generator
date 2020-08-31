@@ -1,0 +1,39 @@
+BEGIN
+Password Generator:
+Idea will be to create  variable or object called Password with each of the following conditions having three array key pairs, 
+var alphabetTypes = {
+    regular = [26 characters] a - z
+    capital : function (prompt(if = true)) {
+        regular = regular.UpperCase
+    }
+}
+var specialCharacters = [] - special characters as strings
+var numbers  = [] 0 through 9 due to the nature of javascript this one will be the most unexpected. 
+
+STep two, is to create prompt and input conditions based on the result will add in extra characters minimum 8
+howManyCharacters = input(no of characters)
+    while no of characters is > 8
+    BEGIN while loop if chracters is less than 8
+        run again until input field is 8 or greater.  Note: must be a whole integer to ensure correct character notation.
+    END
+
+Step Three will be using prompts as switches to turn on and off particular charcter types asking if they need special characters up to the required amount minimum. Try to operate it as a single function
+function characterType() {
+    BEGIN
+    anyspecialCharacters = prompt(any special Characters?)
+    anyNumbers = prompt(anyNumbers)
+    anyUpperCase = prompt (UpperCase Letters?)
+    anyLowercase = prompt (Lowercase)
+    
+    END
+}
+    Next Step will be to take the information from characterType and chuck into a generator function which will be a for or while loop picking random amount of things.
+
+BEGIN WHILE LOOP until i = howManyCharacters {
+    grabs 1 character at random and spits it into the output
+}
+ END
+
+
+
+<p>callfunctionhere<p>
