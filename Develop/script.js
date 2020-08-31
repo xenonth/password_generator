@@ -17,7 +17,7 @@ generateBtn.addEventListener("click", writePassword);
 //Password object, all valuees which can be randomly generated can be accessed from here.
   const lowerCase = ['a','b', 'c', 'd', 'e','f', 'g', 'h', 'i', 'j','k','l','m','n', 'o', 'p','q','r','s','t','u','v','w','x','y','z',];
   const integer =['0','1','2','3','4','5','6','7','8','9'];
-  var specialCharacters = ['~','`','!','@', '#', '$', '%','^', '&', '*', '(', ')','-','_','+','=', '{', '[',']','}','|',":",';','"',"'",'<',',','>','.','?', '/'];
+  const specialCharacters = ['~','`','!','@', '#', '$', '%','^', '&', '*', '(', ')','-','_','+','=', '{', '[',']','}','|',":",';','"',"'",'<',',','>','.','?', '/'];
 //Password Criteria This section will bring up a group of boxes to request the user what conditions they wish to use for their password.
 var length = Number(prompt("How many characters would you like your password to be?"));
 while (isNaN(length) || length < 8 || length > 128) length = Number(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
@@ -40,16 +40,33 @@ while (!uppers && !lowers && !numbers && !symbols) {
 var characterNumber = 0;
 var passwordString = "";
 
+//Look into turning the following into an array or create a value seperately inside an object or an array return to the function and do something else.
+
 function generatePassword () {
   while (characterNumber <= length) {
     if (uppers === true) {
-      var alphabetValue = Math.floor(Math.random()*(lowerCase.length));
-      console.log(lowerCase[alphabetValue].toUpperCase());
+      var alphabetValue = Math.floor(Math.random()*lowerCase.length);
       passwordString += lowerCase[alphabetValue].toUpperCase();
        characterNumber = characterNumber + 1;
        console.log(passwordString);
-       return generatePassword ();
+    
+    else if (lowers === true) {
+      var alphabetValue = Math.floor(Math.random()*lowerCase.length);
+      passwordString += lowerCase[alphabetValue].toUpperCase();
+       characterNumber = characterNumber + 1;
+       console.log(passwordString);
+    }  else if (uppers === true) {
+      var numberValue = Math.floor(Math.random()*integer.length);
+      passwordString += integer[numberValue];
+      characterNumber = characterNumber + 1;
+      console.log(passwordString);
+      }
+      else if (uppers === true) {
+        var symbolValue = Math.floor(Math.random()*specialCharacters.length);
+        passwordString += specialCharacters[symbolValue];
+        characterNumber = characterNumber + 1;
+        console.log(passwordString);
+      }
     }
-  }
 }
 generatePassword();
