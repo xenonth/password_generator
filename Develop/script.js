@@ -49,32 +49,33 @@ var symbols = confirm("Would you like to use special characters?");
     }
 // For each boolean value of true it will pass the following into the approved object.
   var passPhrase = '';
-  var approved = '';
+  var approved = [];
   //The following block checks for all character types and if true will concatenate the values into a string for easier use with rando. 
   if (lowers === true) {
-      approved += "qwertyuiopasdfghjklzxcvbnm";
+      approved.push("qwertyuiopasdfghjklzxcvbnm");
     }
     if (uppers === true) {
-      approved += "QWERTYUIOPASDFGHJKLZXCVBNM";
+      approved.push("QWERTYUIOPASDFGHJKLZXCVBNM");
 
     }
     if (numbers === true) {
-      approved += "1234567890";
-
+      approved.push("1234567890");
       }
     if (symbols === true) {
-      approved += "!@#$%^&*(){}[]=<>/,.";
-    }
+      approved.push("!@#$%^&*(){}[]=<>/,.");
+    } 
+    console.log(approved)
     //The following takes the String approved, randomly recombines into a array and then joins the array back into a string
 
     //Using Possible characters for loop to generate a random password
-    randomiseString = randoSequence(approved);
   for (let i = 0; i < length; i++) {
-    possibleCharacter = Math.floor(Math.random() * randomiseString.length);
-    passPhrase += randomiseString[possibleCharacter];
-    console.log(passPhrase)
+    let randomCharString = Math.floor(Math.random() * approved.length); 
+    let charArray = approved[randomCharString];
+    let singleCharacter = rando(charArray);
+    passPhrase = passPhrase + singleCharacter;
   }
-  console.log(passPhrase)
-  return passPhrase
+  // check for appropriate characters
+  console.log(passPhrase);
+  return passPhrase;
   
 }
