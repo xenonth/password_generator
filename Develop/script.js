@@ -11,25 +11,39 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword());
 
 // psuedocode test and trial.
 //Password object, all valuees which can be randomly generated can be accessed from here.
 
 //STILL NEED TO LINK TO A BUTTON IN THE HTML FILE!!
  
-  //Password Criteria This section will bring up a group of boxes to request the user what conditions they wish to use for their password. The following block is catch in case user selects cancel on all confirm boxes asking the user to at least select one.
+// End of borrowed code
+// password generation variables 
+var lowerCase =  'ab', 'c', 'd', 'e','f', 'g', 'h', 'i', 'j','k','l','m','n', 'o', 'p','q','r','s','t','u','v','w','x','y','z',];
+var upperCase = ['A','B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J','K','L','M','N', 'O', 'P','Q','R','S','T','U','V','W','X','Y','Z',];
+var numerals = ['0','1','2','3','4','5','6','7','8','9'];
+var special =  ['~','`','!','@', '#', '$', '%','^', '&', '*', '(', ')','-','_','+','=', '{', '[',']','}','|',":",';','"',"'",'<',',','>','.','?', '/'];
+
+//Look into turning the following into an array or create a value seperately inside an object or an array return to the function and do something else.
+
+// The following is modded from code suggested by Instructor Trent during Office Hours!
+//Check for character type functions
+
+function generatePassword () {
+    //Password Criteria This section will bring up a group of boxes to request the user what conditions they wish to use for their password. The following block is catch in case user selects cancel on all confirm boxes asking the user to at least select one.
 // All credit to answered Dec 15 '19 at 16:43 Aaron Plocharczyk at https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working 
-var length = Number(prompt("How many characters would you like your password to be?"));
-while (isNaN(length) || length < 8 || length > 128) {
-  length = Number(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
-}
+
 
 //boolean request on conditions to randomly generate passwords following two blocks taken from https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working. 
 /*
 * /** The following block is catch in case user selects cancel on all confirm boxes asking the user to at least select one.
  * All credit to answered Dec 15 '19 at 16:43 Aaron Plocharczyk at https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working 
  */
+  var length = Number(prompt("How many characters would you like your password to be?"));
+  while (isNaN(length) || length < 8 || length > 128) {
+    length = Number(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
+}
 var uppers = confirm("Would you like to use uppercase letters?");
 var lowers = confirm("Would you like to use lowercase letters?");
 var numbers = confirm("Would you like to use numbers?");
@@ -41,19 +55,9 @@ while (!uppers && !lowers && !numbers && !symbols) {
   lowers = confirm("Would you like to use lowercase letters?");
   numbers = confirm("Would you like to use numbers?");
   symbols = confirm("Would you like to use special characters?");
-}
-// End of borrowed code
-// password generation variables 
-var lowerCase =  ['a','b', 'c', 'd', 'e','f', 'g', 'h', 'i', 'j','k','l','m','n', 'o', 'p','q','r','s','t','u','v','w','x','y','z',];
-var upperCase = ['A','B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J','K','L','M','N', 'O', 'P','Q','R','S','T','U','V','W','X','Y','Z',];
-var numerals = ['0','1','2','3','4','5','6','7','8','9'];
-var special =  ['~','`','!','@', '#', '$', '%','^', '&', '*', '(', ')','-','_','+','=', '{', '[',']','}','|',":",';','"',"'",'<',',','>','.','?', '/'];
+  }
 
-//Look into turning the following into an array or create a value seperately inside an object or an array return to the function and do something else.
-
-// The following is modded from code suggested by Instructor Trent during Office Hours!
-function generatePassword () {
-  var passPhrase = '';
+  var password = '';
   for (var characterNumber = 0; characterNumber <= length; characterNumber++) {
     // Password generation for all character types
     if ((uppers === true) && (lowers === true) && (numbers === true) && (symbols === true))  {
@@ -64,9 +68,9 @@ function generatePassword () {
         special,
       ]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
-      let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      let selected = Math.floor(Math.random()* passwordCharArray[selector];
+      password = password + passwordCharArray[selector][selected];
+      console.log(password);
     }
     // Password generation for three character types
     else if ((uppers === false) && (lowers === true) && (numbers === true) && (symbols === true)) {
@@ -77,8 +81,8 @@ function generatePassword () {
       ]
         let selector = Math.floor(Math.random()* passwordCharArray.length);
         let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-        passPhrase += passwordCharArray[selector][selected];
-        console.log(passPhrase);
+        password += passwordCharArray[selector][selected];
+        console.log(password);
     } else if ((uppers === true) && (lowers === false) && (numbers === true) && (symbols === true)) {
       var passwordCharArray = [
         upperCase,
@@ -87,8 +91,8 @@ function generatePassword () {
       ]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
 
     } else if ((uppers === true) && (lowers === true) && (numbers === false) && (symbols === true)) {
       var passwordCharArray = [
@@ -98,8 +102,8 @@ function generatePassword () {
       ]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
     } else if ((uppers === true) && (lowers === true) && (numbers === true) && (symbols === false)) {
       var passwordCharArray = [
         lowerCase,
@@ -108,8 +112,8 @@ function generatePassword () {
       ]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
     }
     //Password Generation for two character types
     else if ((uppers === false) && (lowers === false) && (numbers === true) && (symbols === true)) {
@@ -119,8 +123,8 @@ function generatePassword () {
       ]
         let selector = Math.floor(Math.random()* passwordCharArray.length);
         let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-        passPhrase += passwordCharArray[selector][selected];
-        console.log(passPhrase);
+        password += passwordCharArray[selector][selected];
+        console.log(password);
 
     } else if ((uppers === true) && (lowers === false) && (numbers === false) && (symbols === true)) {
       var passwordCharArray = [
@@ -129,8 +133,8 @@ function generatePassword () {
       ]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
 
     } else if ((uppers === true) && (lowers === true) && (numbers === false) && (symbols === false)) {
       var passwordCharArray = [
@@ -139,8 +143,8 @@ function generatePassword () {
       ]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
 
     } else if ((uppers === false) && (lowers === true) && (numbers === true) && (symbols === false)) {
       var passwordCharArray = [
@@ -149,8 +153,8 @@ function generatePassword () {
       ]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
     }     
     else if ((uppers === true) && (lowers === false) && (numbers === true) && (symbols === false)) {
       var passwordCharArray = [
@@ -159,8 +163,8 @@ function generatePassword () {
       ]
         let selector = Math.floor(Math.random()* passwordCharArray.length);
         let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-        passPhrase += passwordCharArray[selector][selected];
-        console.log(passPhrase);
+        password += passwordCharArray[selector][selected];
+        console.log(password);
 
     } else if ((uppers === false) && (lowers === true) && (numbers === false) && (symbols === true)) {
       var passwordCharArray = [
@@ -169,8 +173,8 @@ function generatePassword () {
       ]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
 
     }
     // Password Generation for a single Character Type
@@ -178,32 +182,31 @@ function generatePassword () {
       var passwordCharArray = [upperCase]
         let selector = Math.floor(Math.random()* passwordCharArray.length);
         let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-        passPhrase += passwordCharArray[selector][selected];
-        console.log(passPhrase);
+        password += passwordCharArray[selector][selected];
+        console.log(password);
 
     } else if ((uppers === false) && (lowers === true) && (numbers === false) && (symbols === false)) {
       var passwordCharArray = [numerals]
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
 
     } else if ((uppers === false) && (lowers === false) && (numbers === true) && (symbols === false)) {
       var passwordCharArray = [numerals];
       let selector = Math.floor(Math.random()* passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
     } else if ((uppers === false) && (lowers === false) && (numbers === false) && (symbols === true)) {
       var passwordCharArray = [special];
       let selector = Math.floor(Math.random() * passwordCharArray.length);
       let selected = Math.floor(Math.random() * passwordCharArray[selector].length);
-      passPhrase += passwordCharArray[selector][selected];
-      console.log(passPhrase);
+      password += passwordCharArray[selector][selected];
+      console.log(password);
     }
   } 
 }
-
 
 
 /* The following is an idea suggested by Instructor Trent to follow through on
