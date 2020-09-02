@@ -11,7 +11,7 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+generateBtn.addEventListener("click", writePassword);
 
 
 
@@ -47,26 +47,34 @@ var symbols = confirm("Would you like to use special characters?");
     numbers = confirm("Would you like to use numbers?");
     symbols = confirm("Would you like to use special characters?");
     }
-// For each boolean value of true it will pass the following into an approved object.
+// For each boolean value of true it will pass the following into the approved object.
   var passPhrase = '';
-  var approved = {}
-  if (uppers === true) {
-      approved.lowers = "qwertyuiopasdfghjklzxcvbnm";
+  var approved = '';
+  //The following block checks for all character types and if true will concatenate the values into a string for easier use with rando. 
+  if (lowers === true) {
+      approved += "qwertyuiopasdfghjklzxcvbnm";
     }
-    if (lowers === true) {
-      passPhrase += approved.uppers = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    if (uppers === true) {
+      approved += "QWERTYUIOPASDFGHJKLZXCVBNM";
 
     }
     if (numbers === true) {
-      approved.numbers = "1234567890";
+      approved += "1234567890";
 
       }
     if (symbols === true) {
-      approved.symbols = "!@#$%^&*(){}[]=<>/,.";
+      approved += "!@#$%^&*(){}[]=<>/,.";
     }
-  for (let i = 0; i <= length; i++) {
-    passPhrase += rando (rando(approved).value);
-        console.log(passPhrase)
+    //The following takes the String approved, randomly recombines into a array and then joins the array back into a string
+
+    //Using Possible characters for loop to generate a random password
+    randomiseString = randoSequence(approved);
+  for (let i = 0; i < length; i++) {
+    possibleCharacter = Math.floor(Math.random() * randomiseString.length);
+    passPhrase += randomiseString[possibleCharacter];
+    console.log(passPhrase)
   }
   console.log(passPhrase)
+  return passPhrase
+  
 }
