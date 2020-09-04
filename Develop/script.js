@@ -13,25 +13,11 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-
-
-
-// The following is modded from code suggested by Instructor Trent during Office Hours!
-//Check for character type functions
-
-
-    //Password Criteria This section will bring up a group of boxes to request the user what conditions they wish to use for their password. The following block is catch in case user selects cancel on all confirm boxes asking the user to at least select one.
-// All credit to answered Dec 15 '19 at 16:43 Aaron Plocharczyk at https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working 
-
-
-//boolean request on conditions to randomly generate passwords following two blocks taken from https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working. 
-/*
-* /** The following block is catch in case user selects cancel on all confirm boxes asking the user to at least select one.
- * All credit to answered Dec 15 '19 at 16:43 Aaron Plocharczyk at https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working 
- */
 function generatePassword () {
+      //Password Criteria This section will bring up a group of boxes to request the user what conditions they wish to use for their password. The following block is catch in case user selects cancel on all confirm boxes asking the user to at least select one.
+// All credit to answered Dec 15 '19 at 16:43 Aaron Plocharczyk at https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working 
   var length = Number(prompt("How many characters would you like your password to be?"));
+
   while (isNaN(length) || length < 8 || length > 128) {
     length = Number(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
   }
@@ -47,6 +33,11 @@ function generatePassword () {
     numbers = confirm("Would you like to use numbers?");
     symbols = confirm("Would you like to use special characters?");
     }
+    //boolean request on conditions to randomly generate passwords following two blocks taken from https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working. 
+/** The following block is catch in case user selects cancel on all confirm boxes asking the user to at least select one.
+ * All credit to answered Dec 15 '19 at 16:43 Aaron Plocharczyk at https://stackoverflow.com/questions/59340866/random-password-generator-javascript-not-working 
+ */
+
 // For each boolean value of true it will pass the following into the approved object.
   var passPhrase = '';
   var approved = [];
@@ -64,21 +55,16 @@ function generatePassword () {
     if (symbols === true) {
       approved.push("!@#$%^&*(){}[]=<>/,.");
     } 
-    console.log(approved)
-    //The following takes the String approved, randomly recombines into a array and then joins the array back into a string
+    
+  // The following for loop is modded from code suggested by Instructor Trent during Office Hours
+  //The code takes the approved Array, randomly selects one of the array elemetns, then selects a string value at random.
+  //Using Possible characters for loop to generate a random character and add it to the passPhrase
 
-    //Using Possible characters for loop to generate a random character and add it to the passPhrase
   for (let i = 0; i < length; i++) {
     let randomCharString = rando(0, (approved.length-1)); 
     let charArray = approved[randomCharString]; 
     let singleCharacter = rando(charArray);
     passPhrase = passPhrase + singleCharacter;
-    //if (approved 1 != undefined) {
-      //run again until it contains a number
     }
-  //}
-  // check for appropriate characters
-  console.log(passPhrase);
   return passPhrase;
-  
 }
