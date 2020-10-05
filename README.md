@@ -1,5 +1,8 @@
 # homwork_three
-First step was to plan out what was required and what I needed to make happen by using psuedocode which I went  over its accepted standards through with Dyon the TA.
+First step was to plan out what was required and what I needed to make happen by using psuedocode which I went  over its accepted standards.
+
+[Generate Your Password](https://xenonth.github.io/homwork_three/)
+
 ## Step One Variables
 Once I planned out what I needed to do I started to code using variables and putting each element inside an array.
 Second step was to create a prompt and confirm's asking the user what characters they need in their password.  I stumbled accross a Stack Overflow page where a programmer already had this setup.  I decided to copy and paste the code and in a multiline comment explain where I obtained the piece of code and what the code does.  
